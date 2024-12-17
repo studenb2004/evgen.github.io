@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование жилья</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="booking-container">
+        <h2>Бронирование жилья</h2>
+        <div class="hotel-info">
+            <h3 id="hotel-name"></h3>
+            <p>Телефон для связи: +71234567890</p>
+            <p>Гражданство: Российская Федерация</p>
+        </div>
+        <form id="bookingForm">
+            <label for="email">Электронная почта*</label>
+            <input type="email" id="email" name="email" required>
+            <label for="lastname">Фамилия*</label>
+            <input type="text" id="lastname" name="lastname" required>
+            <label for="firstname">Имя*</label>
+            <input type="text" id="firstname" name="firstname" required>
+            <label for="phone">Телефон для связи*</label>
+            <input type="tel" id="phone" name="phone" pattern="\+7\d{10}" placeholder="+71234567890" required>
+            <label for="citizenship">Гражданство*</label>
+            <select id="citizenship" name="citizenship" required>
+                <option value="Российская Федерация">Российская Федерация</option>
+                <!-- Добавьте другие страны по необходимости -->
+            </select>
+            <div class="checkbox-container">
+                
+            
+                
+            </div>
+            <label for="checkin-time">Время заезда</label>
+            <select id="checkin-time" name="checkin-time" required>
+                <option value="Неизвестно">Неизвестно</option>
+                <option value="До 6:00">До 6:00</option>
+                <option value="6:00 - 12:00">6:00 - 12:00</option>
+                <option value="12:00 - 18:00">12:00 - 18:00</option>
+                <option value="После 18:00">После 18:00</option>
+            </select>
+            <button type="submit">Забронировать</button>
+        </form>
+    </div>
+    <script>
+        // Получаем параметр hotel из URL и отображаем его в заголовке
+        const urlParams = new URLSearchParams(window.location.search);
+        const hotelName = urlParams.get('hotel');
+        if (hotelName) {
+            document.getElementById('hotel-name').innerText = hotelName;
+        }
+
+        // Обработка отправки формы
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Бронирование успешно!');
+            // Здесь можно добавить код для отправки данных на сервер
+        });
+    </script>
+</body>
+</html>
